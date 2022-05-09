@@ -4,6 +4,11 @@
     padding: 0;
     font-family: Arial, sans-serif;
 }
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url(../imagens/logo1.jpg);
+}
 
 /* removendo linhas dos links*/
 a {
@@ -37,7 +42,7 @@ h1::after {
     content: ' ';
     display: block;
     width: 100%;
-    height: 4px;
+    height: 2px;
     margin-top: 10px;
     background: -webkit-linear-gradient(left, rgba(147,184,189,0) 0%, rgba(147,184,189,0.8) 20%, rgba(147,184,189,1) 53%, rgba(147,184,189,0.8) 79%, rgba(147,184,189,0) 100%);
     background: linear-gradient(left, rgba(147,184,189,0) 0%, rgba(147,184,189,0.8) 20%, rgba(147,184,189,1) 53%, rgba(147,184,189,0.8) 79%, rgba(147,184,189,0) 100%);
@@ -46,7 +51,14 @@ h1::after {
 p {
     margin-bottom: 15px;
 }
-
+#logado {
+    color: #cbd518;
+}
+#manterlogado {
+    min-width: 20px;
+    min-height: 20px;
+    margin-right: 5px;
+}
 .content p:first-child {
     margin: 0px;
 }
@@ -54,10 +66,11 @@ p {
 label {
     color: #1d1bb6;
     position: relative;
+    font-size: 20px;
 }
 /*placeholder*/
 
-::-webkit-input-placeholder {
+:-webkit-input-placeholder {
     color: #bebcbc;
     font-style: italic;
 }
@@ -71,6 +84,7 @@ textarea:-moz-placeholder {
 input {
     outline: none;
 }
+
 /*estilo dos input, menos o checkbox*/
 
 input:not([type="checkbox"]) {
@@ -85,9 +99,10 @@ input:not([type="checkbox"]) {
     -webkit-box-shadow: 0px 1px 4px 0px rgba(60, 26, 182, 0.6) inset;
     box-shadow: 0px 1px 4px 0px rgba(60, 26, 182, 0.6) inset;
 
-    -webkit-transition: all 1s linear;
-    transition:  all 1s linear;
+    -webkit-transition: all 0.2 linear;
+    transition:  all 0.2s linear;
 }
+
 /*estilo botão submit*/
 input[type="submit"] {
     width: 100%!important;
@@ -105,13 +120,15 @@ input[type="submit"] {
 
     transition: all 0.2s linear;
 }
+
 /*estilo do botão submit no hover*/
 input[type="submit"]:hover {
     background: #b0afd6;
 }
+
 .link {
     position: absolute;
-    background: #e9e9f0;
+    background: #2525f4;
     color: rgb(18, 55, 55);
     left: 0px;
     height: 20px;
@@ -124,6 +141,7 @@ input[type="submit"]:hover {
     -webkit-border-radius: 0 0 5px 5px;
     border-radius:  0 0 5px 5px;
 }
+
 .link a {
     font-weight: bold;
     background: #c3c2d8;
@@ -138,15 +156,95 @@ input[type="submit"]:hover {
     -webkit-transition: all 0.4s linear;
     transition: all 0.4s linear;
 }
+
 .link a:hover {
     color: #0b1718;
     background: #cbd518;
     border: 1px solid #44b3c0;
 }
 
+#cadastro,
+#login {
+    position: absolute;
+    top: 40px;
+    width: 88%;
+    padding: 18px 6% 60px 6%;
+    margin: 0  0 35px 0;
+    background: #4d4a4a;
+    border: 1px solid rgba(147, 184, 189, 0.8);
 
+    -webkit-border-shadow: 5px;
+    border-radius: 5px;
 
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
 
+/*efeito ao clicar no botão (ir para login)*/
+#paracadastro:target ~ .content #cadastro,
+#paralogin:target ~ .content #login {
+    z-index: 2;
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
 
+    -webkit-animation-delay: .1s;
+    animation-delay: .1s;
+}
 
+/*efeito ao clicar no botão (cadastro)*/
+#registro:target ~ .content #login,
+#paralogin:target ~ .content #cadastro {
+    -webkit-animation-name: fadeOutLeft;
+    animation-name: fadeOutLeft;
+}
 
+/*fadeInLeft*/
+@-webkit-keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*fadeOutLeft*/
+@-webkit-keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateX(-20px);
+    }
+}
+
+@keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
